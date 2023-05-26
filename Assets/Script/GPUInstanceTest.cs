@@ -13,6 +13,11 @@ public class GPUInstanceTest : MonoBehaviour
     public void SwitchCameraTransform()
     {
         m_isSwitch = !m_isSwitch;
+        ResetCameraCameraTransform();
+    }
+
+    private void ResetCameraCameraTransform()
+    {
         if (m_isSwitch)
         {
             m_cameraTransform.position = new Vector3(0.0f, 2.0f, 0.0f);
@@ -44,6 +49,7 @@ public class GPUInstanceTest : MonoBehaviour
 
         ModeAndDebugInfoSetting();        
         BuildObjects();
+        ResetCameraCameraTransform();
     }
     private void OnDisable()
     {
@@ -117,7 +123,7 @@ public class GPUInstanceTest : MonoBehaviour
             width, height * 2 / 100);
         m_style.fontSize = height * 5 / 100;
 
-        m_tempText = string.Format("Mode:{0}", m_mode);
+        m_tempText = string.Format("Mode:{0}\nOjbectCounts:{1}", m_mode, m_rowCount * m_columnCount);
         GUI.Label(printRect, m_tempText, m_style);
     }
 
@@ -167,6 +173,8 @@ public class GPUInstanceTest : MonoBehaviour
     private uint m_columnCount = 100;
     [SerializeField]
     private float m_stepSize = 2.0f;
+    [SerializeField]
+    private bool m_isSwitch = false;
 
     [SerializeField]
     private MODE m_mode = MODE.DYNAMIC_BATCH;
@@ -184,10 +192,7 @@ public class GPUInstanceTest : MonoBehaviour
     private Material m_targetMaterial = null;
     private Matrix4x4[] m_matrices;
     private Matrix4x4[] m_matrices1023 = new Matrix4x4[1023];
-
-    //private Matrix4x4 m_oritinalCameraMatrix = Matrix4x4.identity;
     private Vector3 m_originalCameraPosition = Vector3.zero;
     private Vector3 m_originalEulerAngles = Vector3.zero;
-    private bool m_isSwitch = false;
     private Transform m_cameraTransform = null;
 }

@@ -270,6 +270,7 @@ MonoBehaviour:
   m_rowCount: 300
   m_columnCount: 300
   m_stepSize: 2
+  m_isSwitch: 1
   m_mode: 3
   m_prefab: {fileID: 3963066200017068019, guid: c6e563d5c608a3048b432d561ead791f, type: 3}
   m_textColor: {r: 0, g: 0, b: 0.5, a: 1}
